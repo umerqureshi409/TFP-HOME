@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talpur Dynasty Legacy - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tfp-brown': '#c48f63',
+                        'tfp-dark': '#212123',
+                        'tfp-gold': '#C4A775'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .curved-nav {
+            border-radius: 50px;
+            background: #212123;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 50;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #212123;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C4A775;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            background: #C4A775;
+            color: #212123;
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-delayed {
+            animation: float 3s ease-in-out infinite;
+            animation-delay: -1.5s;
+        }
+
+        .value-card {
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .sword-divider {
+            position: relative;
+            height: 2px;
+            background: #212123;
+        }
+
+        .sword-divider::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #212123;
+            transform: rotate(45deg);
+            left: calc(50% - 10px);
+            top: -9px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-tfp-brown to-tfp-gold min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-3">
+        <div class="curved-nav flex justify-between items-center px-6 py-3 mx-auto max-w-7xl">
+            <a href="index.html" class="text-white text-2xl font-bold">
+                <img src="./logo.png" alt="Talpur Foundation Logo" class="w-auto h-12"/>
+            </a>
+            <div class="hidden md:flex items-center space-x-8 text-sm">
+                <a href="home.html" class="text-white hover:text-tfp-gold transition-colors duration-300">Home</a>
+                <a href="blogs.html" class="text-white hover:text-tfp-gold transition-colors duration-300">Blogs</a>
+                <a href="about.html" class="text-white hover:text-tfp-gold transition-colors duration-300">About Us</a>
+                <a href="contact.html" class="text-white hover:text-tfp-gold transition-colors duration-300">Contact Us</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden sm:block">
+                    <input type="text" class="w-64 px-4 py-2 pr-10 rounded-full focus:outline-none bg-tfp-brown/50 text-white placeholder-white/70 backdrop-blur-sm transition-all duration-300 focus:bg-tfp-brown/70" placeholder="Search..."/>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10A7 7 0 1010 17 7 7 0 0017 10z" />
+                    </svg>
+                </div>
+                <button onclick="toggleMenu()" class="md:hidden text-white hover:text-tfp-gold transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="absolute top-16 right-0 w-full bg-tfp-dark p-4 rounded-lg hidden flex-col md:hidden transition-all duration-300">
+            <a href="home.html" class="block text-white hover:text-gray-200 py-2">Home</a>
+            <a href="blogs.html" class="block text-white hover:text-gray-200 py-2">Blogs</a>
+            <a href="about.html" class="block text-white hover:text-gray-200 py-2">About Us</a>
+            <a href="contact.html" class="block text-white hover:text-gray-200 py-2">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24 pb-16 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold text-tfp-dark mb-12 tracking-tighter text-center">
+                <span class="block">ABOUT</span>
+                <span class="block text-white">OUR LEGACY</span>
+            </h1>
+
+            <!-- Mission & Vision Section -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="glass-card rounded-xl p-8 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold text-tfp-dark mb-6">Our Mission</h2>
+                        <p class="text-tfp-dark/80 leading-relaxed">
+                            The Talpur Foundation is dedicated to preserving and promoting the rich cultural heritage 
+                            of the Talpur Dynasty. We aim to educate and inspire future generations about the 
+                            historical significance of this important era in Sindh's history.
+                        </p>
+                    </div>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qoZbiLIHDWT3hBBuZX1p0pMXzf2Acp.png" 
+                         alt="Decorative Sword" 
+                         class="absolute -right-16 -bottom-16 w-48 opacity-10 transform rotate-45">
+                </div>
+
+                <div class="glass-card rounded-xl p-8 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold text-tfp-dark mb-6">Our Vision</h2>
+                        <p class="text-tfp-dark/80 leading-relaxed">
+                            We envision a world where the legacy of the Talpur Dynasty is widely recognized and 
+                            celebrated, contributing to a deeper understanding of Sindh's cultural identity and 
+                            fostering pride in our shared heritage.
+                        </p>
+                    </div>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qoZbiLIHDWT3hBBuZX1p0pMXzf2Acp.png" 
+                         alt="Decorative Sword" 
+                         class="absolute -left-16 -bottom-16 w-48 opacity-10 transform -rotate-45">
+                </div>
+            </div>
+
+            <!-- Values Section -->
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold text-center text-tfp-dark mb-12">Our Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="value-card bg-tfp-dark rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 bg-tfp-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ph-book-open text-3xl text-tfp-gold"></i>
+                        </div>
+                        <h3 class="text-tfp-gold font-semibold mb-2">Historical Knowledge</h3>
+                        <p class="text-white/70 text-sm">Preserving and documenting our rich historical heritage</p>
+                    </div>
+
+                    <div class="value-card bg-tfp-dark rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 bg-tfp-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ph-graduation-cap text-3xl text-tfp-gold"></i>
+                        </div>
+                        <h3 class="text-tfp-gold font-semibold mb-2">Cultural Education</h3>
+                        <p class="text-white/70 text-sm">Spreading awareness about our cultural heritage</p>
+                    </div>
+
+                    <div class="value-card bg-tfp-dark rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 bg-tfp-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ph-users-three text-3xl text-tfp-gold"></i>
+                        </div>
+                        <h3 class="text-tfp-gold font-semibold mb-2">Community Engagement</h3>
+                        <p class="text-white/70 text-sm">Fostering participation and involvement</p>
+                    </div>
+
+                    <div class="value-card bg-tfp-dark rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 bg-tfp-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ph-check-circle text-3xl text-tfp-gold"></i>
+                        </div>
+                        <h3 class="text-tfp-gold font-semibold mb-2">Integrity</h3>
+                        <p class="text-white/70 text-sm">Maintaining authenticity in our research</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="glass-card rounded-xl p-8 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold text-tfp-dark mb-8">Our Team</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-tfp-dark rounded-full mx-auto mb-4 overflow-hidden">
+                                <img src="https://media.licdn.com/dms/image/v2/D4D03AQFi1ogFOgCLRw/profile-displayphoto-shrink_800_800/B4DZTS8TqxHYAc-/0/1738705814897?e=1744848000&v=beta&t=Ghf2Hw1TXAm3_TSlDXIBJNThpr4ZHfNNLL1fR3A77_o" alt="Team Member" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-lg font-semibold text-tfp-dark mb-1">Muhammad Umer Qureshi</h3>
+                            <p class="text-tfp-dark/70 text-sm">Historical Research Director</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-tfp-dark rounded-full mx-auto mb-4 overflow-hidden">
+                                <img src="https://media.licdn.com/dms/image/v2/D4D03AQFi1ogFOgCLRw/profile-displayphoto-shrink_800_800/B4DZTS8TqxHYAc-/0/1738705814897?e=1744848000&v=beta&t=Ghf2Hw1TXAm3_TSlDXIBJNThpr4ZHfNNLL1fR3A77_o" alt="Team Member" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-lg font-semibold text-tfp-dark mb-1">Muhammad Umer Qureshi</h3>
+                            <p class="text-tfp-dark/70 text-sm">Cultural Heritage Expert</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-tfp-dark rounded-full mx-auto mb-4 overflow-hidden">
+                                <img src="https://media.licdn.com/dms/image/v2/D4D03AQFi1ogFOgCLRw/profile-displayphoto-shrink_800_800/B4DZTS8TqxHYAc-/0/1738705814897?e=1744848000&v=beta&t=Ghf2Hw1TXAm3_TSlDXIBJNThpr4ZHfNNLL1fR3A77_o" alt="Team Member" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-lg font-semibold text-tfp-dark mb-1">Muhammad Umer Qureshi</h3>
+                            <p class="text-tfp-dark/70 text-sm">Community Outreach Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating decorative swords -->
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qoZbiLIHDWT3hBBuZX1p0pMXzf2Acp.png" 
+             alt="Decorative Sword" 
+             class="absolute top-20 right-10 w-32 opacity-20 floating hidden lg:block">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qoZbiLIHDWT3hBBuZX1p0pMXzf2Acp.png" 
+             alt="Decorative Sword" 
+             class="absolute bottom-20 left-10 w-32 opacity-20 floating-delayed hidden lg:block">
+    </main>
+
+    <div class="social-icons">
+        <a href="#" class="social-icon group">
+            <i class="ph-facebook-logo text-xl"></i>
+        </a>
+        <a href="#" class="social-icon group">
+            <i class="ph-instagram-logo text-xl"></i>
+        </a>
+        <a href="#" class="social-icon group">
+            <i class="ph-twitter-logo text-xl"></i>
+        </a>
+    </div>
+
+    <footer class="bg-tfp-brown text-white py-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-4">
+                <p class="text-sm">&copy; 2023 TFP</p>
+                <div class="text-2xl font-bold"><img src="./logo.png" alt="Talpur Foundation Logo" class="w-auto h-12"/></div>
+            </div>
+            <div class="w-full h-px bg-white/30 mb-4"></div>
+            <div class="flex justify-between items-center">
+                <div class="flex gap-8">
+                    <a href="home.html" class="text-sm hover:underline">Home</a>
+                    <a href="#" class="text-sm hover:underline">Leadership</a>
+                    <a href="contact.html" class="text-sm hover:underline">Contact</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/profile.php?id=61572801676028" class="hover:opacity-80 transition-opacity">
+                        <i class="ph ph-facebook-logo text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/talpurfoundationpakistan/" class="hover:opacity-80 transition-opacity">
+                        <i class="ph ph-instagram-logo text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("mobile-menu");
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
+        }
+    </script>
+</body>
+</html>
